@@ -45,7 +45,7 @@ public class SecurityConfig  {
        public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity.csrf().disable()
                 .authorizeRequests()
-                .requestMatchers("/create").permitAll()
+                .requestMatchers("/create","login").permitAll()
                 .and()
                 .authorizeRequests().requestMatchers("/createPayment", "createLeaseDetails").hasRole("admin").anyRequest()
                 .authenticated().and()
