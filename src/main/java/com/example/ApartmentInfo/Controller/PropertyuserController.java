@@ -50,9 +50,12 @@ public class PropertyuserController {
 //    }
 
     @GetMapping("/login")
-    public String login(){
+    public String loginPage(){
+
         return "login";
     }
+
+
     @PostMapping("/create")
     public ResponseEntity<String> createProperty(@RequestBody PropertyRequestDTO propertyRequestDTO) {
         propertyuserService.createProperty(propertyRequestDTO);
@@ -61,22 +64,6 @@ public class PropertyuserController {
     }
 
 
-//@PostMapping("/authenticate")
-//    public String createAuthenticationToken(@RequestBody JwtRequest jwtRequest) throws Exception {
-//
-//    Authentication authentication = authenticationManager.authenticate(new  UsernamePasswordAuthenticationToken(jwtRequest.getUemail(), jwtRequest.getPassword()));
-//   if (authentication.isAuthenticated()) {
-//        return jwtUtil.generateToken(jwtRequest.getUemail());
-//
-//           }
-//    else {
-//        throw new UsernameNotFoundException("invalid user request !");
-//    }
-
-
-
-
-    @CrossOrigin(origins = "http://localhost:202/jan2022/login")
     @PostMapping("/authenticate")
     public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtRequest jwtRequest) {
         try {
@@ -118,4 +105,15 @@ public class PropertyuserController {
 //    @GetMapping("/propertyuser")
 //    public Propertyuser saveUser(@RequestBody Propertyuser propertyuser){
 //        return propertyuserService.c(propertyuser);
+//    }
+//@PostMapping("/authenticate")
+//    public String createAuthenticationToken(@RequestBody JwtRequest jwtRequest) throws Exception {
+//
+//    Authentication authentication = authenticationManager.authenticate(new  UsernamePasswordAuthenticationToken(jwtRequest.getUemail(), jwtRequest.getPassword()));
+//   if (authentication.isAuthenticated()) {
+//        return jwtUtil.generateToken(jwtRequest.getUemail());
+//
+//           }
+//    else {
+//        throw new UsernameNotFoundException("invalid user request !");
 //    }

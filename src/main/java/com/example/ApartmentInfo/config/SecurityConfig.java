@@ -29,7 +29,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity
-public class SecurityConfig  {
+public class SecurityConfig   {
 
 
 
@@ -46,11 +46,10 @@ public class SecurityConfig  {
        protected SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity
                 .csrf().disable()
-                .authorizeHttpRequests()
+                .authorizeRequests()
                 .requestMatchers( "/create,","/login", "/register","/authenticate").permitAll()
-               .and()
-
-                .authorizeHttpRequests()
+                .and()
+                .authorizeRequests()
                 .requestMatchers("/createPayment", "/createLeaseDetails","/property/**")
                 .authenticated()
                 .and()
