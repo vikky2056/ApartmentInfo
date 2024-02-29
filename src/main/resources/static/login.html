@@ -64,7 +64,9 @@
 </div>
 
 <script>
-        function submitForm() {
+        function submitForm(event) {
+            event.preventDefault(); // Prevent the default form submission
+
             const uemail = document.getElementById('uemail').value;
             const password = document.getElementById('password').value;
 
@@ -81,10 +83,11 @@
                 body: JSON.stringify(requestBody),
             })
             .then(response => {
-                if (!response.ok) {
+                if (response.ok) {
+                    return response.json();
+                } else {
                     throw new Error('Authentication failed');
                 }
-                return response.json();
             })
             .then(data => {
                 // Handle successful authentication, e.g., store the token and redirect
