@@ -19,7 +19,6 @@ public class PropertyuserUserDetails implements UserDetails {
     public PropertyuserUserDetails(Propertyuser propertyuser) {
         name = propertyuser.getUemail();
         password = propertyuser.getPassword();
-        System.out.println(password);
         authorities = Arrays.stream(propertyuser.getRoles().split(","))
                 .map(SimpleGrantedAuthority::new)
                 .collect(Collectors.toList());
