@@ -4,6 +4,7 @@ import com.example.ApartmentInfo.Model.Propertyuser;
 import com.example.ApartmentInfo.Model.Property;
 import com.example.ApartmentInfo.Service.PropertyService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,12 +28,14 @@ public class PropertyController {
 }
 
 @GetMapping("/property/id/{id}")
+@PreAuthorize("hasAuthority('ROLE_admin')")
     public Property getPropertyById(@PathVariable("id") int pid){
         return propertyService.getPropertyById(pid);
 }
 
 
 @GetMapping("/property/all")
+@PreAuthorize("hasAuthority('ROLE_admin')")
 public List<Property> getAllProperty(){
         return propertyService.getAllProperty();
 }

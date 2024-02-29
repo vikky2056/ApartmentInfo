@@ -19,7 +19,6 @@ public class PaymentController {
 
     @PostMapping("/createPayment")
     @PreAuthorize("hasAuthority('ROLE_admin')")
-
     public ResponseEntity<String> createPaymentDetails(@RequestBody PaymentRequestDTO paymentRequestDTO, Authentication authentication) {
         paymentService.createPaymentDetails(paymentRequestDTO);
         return ResponseEntity.ok("Payment details created successfully.");
